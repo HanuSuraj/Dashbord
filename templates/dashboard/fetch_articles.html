@@ -1,0 +1,74 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latest Articles</title>
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/contact/">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Latest Articles</h1>
+
+        <!-- Search form for filtering by author and title -->
+        <form method="GET" class="search-bar">
+            <label for="author">Search by Author:</label>
+            <input type="text" name="author" id="author" value="{{ request.GET.author }}">
+
+            <label for="title">Search by Title:</label>
+            <input type="text" name="title" id="title" value="{{ request.GET.title }}">
+
+            <button type="submit">Search</button>
+        </form>
+
+        <ul class="articles-list">
+            {% for article in page_obj %}
+            <li class="article-card">
+                <!-- Display article image -->
+                {% if article.url_to_image %}
+                <img src="{{ article.url_to_image }}" alt="{{ article.title }}">
+                {% endif %}
+
+                <h2 class="article-title">{{ article.title }}</h2>
+                <p>{{ article.content }}</p>
+
+                <!-- Display article author and published date -->
+                <p class="article-author"><strong>Author:</strong> {{ article.author }}</p>
+                <p class="article-published"><strong>Published At:</strong> {{ article.published_at|date:"F d, Y" }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <!-- Pagination controls -->
+        <div class="pagination">
+            <span class="step-links">
+                {% for num in page_obj.paginator.page_range %}
+                <a href="?page={{ num }}&author={{ request.GET.author }}&title={{ request.GET.title }}"
+                    class="page-number">{{ num }}</a>
+                {% endfor %}
+            </span>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Website. All Rights Reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/static.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 30px;
+}
+
+/* Logo or Home link */
+.navbar .logo a {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Navbar links */
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    /* Ensures the links are displayed horizontally */
+    gap: 20px;
+    /* Space between links */
+    margin: 0;
+    /* Removes default margin from the list */
+}
+
+.navbar ul li {
+    margin: 0;
+    /* Ensures no space between the list items */
+}
+
+.navbar ul li a {
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a:focus {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Search bar */
+.search-bar {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar label {
+    font-size: 16px;
+    color: #333;
+}
+
+.search-bar input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 220px;
+    font-size: 16px;
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #0056b3;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        /* Stacks the navbar items vertically on smaller screens */
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        /* Stacks the navbar items vertically */
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .navbar .search-bar {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .search-bar input {
+        width: 100%;
+    }
+}
+
+/* Styling for the articles */
+.articles-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.article-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+    transform: scale(1.05);
+}
+
+.article-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.article-title {
+    font-size: 1.2em;
+    margin: 15px 0;
+    color: #333;
+}
+
+.article-author,
+.article-published {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.read-more {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/* Pagination styles */
+.pagination {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.pagination .step-links a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1em;
+}
+
+.pagination .step-links .current {
+    margin: 0 5px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.pagination .step-links a:hover {
+    text-decoration: underline;
+}
+
+/* Footer (optional, if needed) */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    margin-top: 40px;
+}

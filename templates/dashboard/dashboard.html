@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <script src="{% static 'js/script.js' %}" defer></script>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Header Section -->
+        <header class="dashboard-header">
+            <h2>Welcome to Your Dashboard</h2>
+            <p>Hello, <strong>{{ user.username }}</strong>!</p>
+        </header>
+
+        <!-- Stats Section -->
+        <div class="dashboard-stats">
+            <div class="stat-item">
+                <h3>Total Articles</h3>
+                <p class="stat-value">{{ total_articles }}</p> <!-- Display total_articles -->
+            </div>
+            <div class="stat-item">
+                <h3>Total Payout</h3>
+                <p class="stat-value">${{ total_payout }}</p> <!-- Display total_payout -->
+            </div>
+        </div>
+
+        <!-- Export Section -->
+        <div class="dashboard-export">
+            <h3>Export Options</h3>
+            <ul class="export-list">
+                <li><a href="{% url 'export-pdf' %}" class="export-link"><span class="icon">📄</span> Export as PDF</a>
+                </li>
+                <li><a href="{% url 'export-csv' %}" class="export-link"><span class="icon">📊</span> Export as CSV</a>
+                </li>
+                <li><a href="{% url 'export-google-sheets' %}" class="export-link"><span class="icon">📈</span> Export
+                        to Google Sheets</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
